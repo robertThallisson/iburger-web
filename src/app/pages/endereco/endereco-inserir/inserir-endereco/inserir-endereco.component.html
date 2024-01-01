@@ -1,0 +1,31 @@
+<div class="ui-fluid margin-inserir">
+  <div class="p-grid forms-grid">
+    <div class="p-col-12 p-md-6">
+      <input-mbi name="nome"  [(ngModel)]="value.rua"
+        label="Rua">
+      </input-mbi>
+
+    </div>
+
+    <div class="p-col-12 p-md-6">
+      <input-mbi name="nome"  [(ngModel)]="value.numero"
+        label="Número">
+      </input-mbi>
+
+    </div>
+
+    <div class="p-col-12 p-md-6">
+      <input-mbi name="nome"  [(ngModel)]="value.bairro"
+        label="Bairro">
+      </input-mbi>
+
+    </div>
+
+    <div class="div-botao-salvar">
+      <ion-button size="medium" expand="full" shape="round" color="primary" icon-right tappable (click)="salvar()">
+        Salvar
+        <ion-icon name="checkmark-circle" color="success"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+</div>

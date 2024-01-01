@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-toolbar color="danger">
+    <ion-item no-padding class="animated fadeInUp">
+      <ion-input style="border-bottom: 2px solid;" [autofocus]="true" placeholder="Digite um valor para pesquisar"
+        (keydown)="keyDown($event)" (keyup)="onKeyUp($event)" #pesquisa name="pesquisa" [(ngModel)]="value" type="text" place
+        >
+      </ion-input>
+    </ion-item>
+    <ion-buttons slot="end">
+
+      <ion-button size="small" shape="round" color="light" (click)="pesquisar()">
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content (keydown)="keyDown($event)">
+  <div>
+    <ion-list  >
+      <ion-item *ngFor="let item of itens; let i = index;"  class="clicavel" (click)="selecionar(item)" name="item-t">
+        <ion-button  name="botao" slot="start" size="small" shape="round" color="light" >
+          <div *ngIf="!estaSelecionavel(item)" class="icon-inner">
+            <ion-icon name="radio-button-off" color="primary"></ion-icon>
+          </div>
+          <div *ngIf="estaSelecionavel(item)" class="icon-inner">
+            <ion-icon name="radio-button-on" color="primary"></ion-icon>
+          </div>
+        </ion-button>
+        {{ getNome(item) }}
+      </ion-item>
+    </ion-list>
+  </div>
+
+
+</ion-content>
+<ion-footer *ngIf="isMultiple">
+  <div>
+    <ion-button class="botoes-multiselecao" (click)="ok()" color="primary">
+      OK
+    </ion-button>
+  </div>
+  <div>
+    <ion-button class="botoes-multiselecao" (click)="clean()" color="primary">
+      limpar
+    </ion-button>
+  </div>
+</ion-footer>

@@ -1,0 +1,29 @@
+.itemconfiguration {
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.tooltip {
+  display: inline;
+  text-decoration: none;
+  top: 0px;
+  left: 4px;
+}
+
+.tooltip:hover:after {
+  border-radius: 5px;
+  top: -5px;
+  color: black;
+  content: attr(alt);
+  left: 160px;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+}
+
+.tooltip:hover:before {
+  border: solid;
+  border-color: transparent black;
+  border-width: 6px 6px 6px 0;
+ 
+}

@@ -1,0 +1,18 @@
+import { Injectable } from '@angular/core';
+import { BaseService } from '../base.service';
+import { HttpClient } from '@angular/common/http';
+import { AutentificacaoService } from '../autentificacao/autentificacao.service';
+import { Evento } from '../../model/objetc/evento';
+@Injectable({
+  providedIn: 'root'
+})
+export class EventoService extends BaseService<Evento>  {
+
+  constructor(
+    public http: HttpClient,
+    public as: AutentificacaoService
+  ) {
+    super(http, as);
+    this.url = '/evento';
+  }
+}

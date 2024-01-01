@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-toolbar color="primary">
+    <ion-item no-padding class="animated fadeInUp">
+      <ion-input [autofocus]="true" #inp autofocus="true" placeholder="Digite um valor para pesquisar"  name="inp"
+        [(ngModel)]="value" color="light" type="text" (ionChange)="filtrar()" place></ion-input>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+
+    <div>
+      <ion-list  >
+        <ion-item *ngFor="let item of listaFiltrada; let i = index;" [ngClass]="{ 'selected': item === selecionado }" class="clicavel"
+          (click)="click(item, i)"  (dblclick)="dbClick(item)" >
+          {{ item.descricao }}
+        </ion-item>
+      </ion-list>
+    </div>  
+
+</ion-content>
+
+<ion-footer >
+  <div>
+    <ion-button class="botoes-multiselecao" (click)="selecionar()" color="primary">
+      OK
+    </ion-button>
+  </div>
+  <div>
+    <ion-button  class="botoes-multiselecao" (click)="closeAny()" color="primary">
+      limpar
+    </ion-button>
+  </div>
+</ion-footer>

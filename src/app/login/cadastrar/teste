@@ -1,0 +1,147 @@
+  //TEST-76650e74-b90f-4632-b612-6a69b7186e0f
+  ///TEST-8125418307643467-021114-194d02b1cda16c609de19463dcb70bd8-179661964
+
+  //https://dev.pagseguro.uol.com.br/reference/charge-credit
+
+  //contatoamnweb@gmail.com
+  //DAA4365F6BA04D8FBEB1D65C2E803711
+
+  //app8716233946
+  //E45D435995954A1BB4501FA595C8634A
+  //v80967162030757328227@sandbox.pagseguro.com.br
+  //w2B105b8FtR88683  -senha
+  //PUB9C5809FD14C84E27919C66CA223D01F3
+
+  //npm install --save stripe
+
+  //galaxy
+  //5473
+  //83Mw5u8988Qj6fZqS4Z8K7LzOo1j28S706R0BeFe
+  //https://api.sandbox.cloud.galaxpay.com.br/v2
+
+  //https://transfeera.com/desenvolvedores/
+
+
+
+    this.usuarioService.http.post('https://api.sandbox.cloud.galaxpay.com.br/v2/token',
+      {
+        grant_type: 'authorization_code',
+        scope: 'customers.read customers.write plans.read plans.write transactions.read transactions.write webhooks.write cards.read cards.write card-brands.read charges.read charges.write'
+      },
+      this.getOptions()).subscribe(
+        data => {
+          this.usuarioService.http.post('https://api.sandbox.cloud.galaxpay.com.br/v2/token',
+            {
+              myId: 'pay-62f51ee22f8581.35984329',
+              value: 12999,
+              additionalInfo: 'Lorem ipsum dolor sit amet.',
+              payday: '2022-08-11',
+              payedOutsideGalaxPay: false,
+              mainPaymentMethodId: 'creditcard',
+              Customer: {
+                myId: 'pay-62f51ee280bfe8.99874638',
+                name: 'Lorem ipsum dolor sit amet.',
+                document: '85086010004',
+                emails: [
+                  'teste7048email8268@galaxpay.com.br',
+                  'teste8746email4069@galaxpay.com.br'
+                ],
+                phones: [
+                  '3140201512',
+                  '31983890110'
+                ],
+                invoiceHoldIss: false,
+                municipalDocument: '121212121212-02',
+                password: 'asd45a564s4d54as@aaa',
+                Address: {
+                  zipCode: '30411330',
+                  street: 'Rua platina',
+                  number: '1330',
+                  complement: '2º andar',
+                  neighborhood: 'Prado',
+                  cit: 'Belo Horizonte',
+              state: 'MG'
+            },
+                ExtraFields: [
+                  {
+                    tagName: 'CP_MATRICULA',
+                    tagValue: 'A532620'
+                  }
+                ]
+              },
+              PaymentMethodCreditCard: {
+                Link: {
+                  minInstallment: 4,
+                  maxInstallment: 12
+                },
+                Antifraud: {
+                  ip: '192.168.2.10',
+                  sessionId: '270e34e2365e2ca034c24f2907f24dd3'
+                },
+                Card: {
+                  myId: 'pay-62f51ee3bf69a4.17957830',
+                  hash: 'ABCD-1234-EFGH-5678-ABCD-1234-EFGH-5678',
+                  number: '4111 1111 1111 1111',
+                  holder: 'JOAO J J DA SILVA',
+                  expiresAt: '2022-08',
+                  cvv: '363'
+                },
+                cardOperatorId: 'getnet',
+                preAuthorize: false,
+                qtdInstallments: 12
+              },
+              PaymentMethodBoleto: {
+                fine: 100,
+                interest: 200,
+                instructions: 'Lorem ipsum dolor sit amet.',
+                deadlineDays: 1,
+                Discount: {
+                  qtdDaysBeforePayDay: 1,
+                  type: 'percent',
+                  value: 1500
+            }
+              },
+              PaymentMethodPix: {
+                fine: 100,
+                interest: 200,
+                instructions: 'Lorem ipsum dolor sit amet.',
+                Deadline: {
+                  type: 'days',
+                  value: 60
+                },
+                Discount: {
+                  qtdDaysBeforePayDay: 1,
+                  type: 'percent',
+                  value: 1500
+                }
+              },
+              InvoiceConfig: {
+                description: 'Lorem ipsum dolor sit amet.',
+                smu: 123456,
+                type: 'onlyOne',
+                createOn: 'daysBeforePayDay',
+                qtdDaysBeforePayDay: 1
+              },
+              ExtraFields: [
+                {
+                  tagName: 'CP_FILIAL',
+                  tagValue: 'MG 01'
+                }
+              ]
+            },
+            this.getOptions()
+          ).subscribe(
+            //Ctrl+Alt+R : Start/Stop Recording
+            //Ctrl+Alt+P : Playback
+            data2 => {
+
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        },
+        error => {
+          console.log(error);
+        }
+      );

@@ -1,0 +1,7 @@
+{
+  "name": "farmacia-facil",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

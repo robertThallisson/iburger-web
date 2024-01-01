@@ -1,0 +1,10 @@
+:host {
+  ion-list {
+    &.list-md {
+      padding: 0;
+    }
+  }
+}
+ion-item[button] {
+  pointer-events: auto !important;
+}

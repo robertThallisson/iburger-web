@@ -1,0 +1,67 @@
+<ion-content class="ion-padding">
+
+  <div class="div-principal">
+
+    <ion-img style="width: 200px;margin: auto;" src="assets/icon/logo.png"></ion-img>
+
+  </div>
+
+
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" style="margin-top: 15px;" (keydown)="keyDownFunction($event, f)">
+    <ion-list lines="none">
+
+      <div class="ion-margin-bottom">
+        <ion-item color="light">
+          <ion-icon name="mail" slot="start" color="primary"></ion-icon>
+          <ion-input type="input" name="email" ngModel #emailCtrl="ngModel" placeholder="Email" required>
+          </ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="!emailCtrl.valid && emailCtrl.touched" class="ion-text-center">
+          <p class="errorMsg">* Insira um e-mail valido</p>
+        </ion-text>
+      </div>
+
+      <ion-item color="light">
+        <ion-icon name="key" slot="start" color="primary"></ion-icon>
+        <ion-icon color="primary" slot="end" (click)="changeType()" [name]="type ? 'eye-outline' : 'eye-off-outline'">
+        </ion-icon>
+        <ion-input [type]="type ? 'password' : 'text'" name="senha" ngModel #senhaCtrl="ngModel"
+          placeholder="senha" required minlength="3">
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="!senhaCtrl.valid && senhaCtrl.touched" class="ion-text-center">
+        <p class="errorMsg">* Senha deve conter no mínimo 4 dígitos.</p>
+      </ion-text>
+
+    </ion-list>
+
+    <p class="ion-text-right">
+      <span routerLink="/login/forgot-password">Esqueceu a senha?</span>
+    </p>
+
+    <ion-button *ngIf="!isLogin" [disabled]="!f.valid" expand="block" shape="round" type="submit" color="primary">
+      Entrar
+    </ion-button>
+
+    <div class="ion-text-center" *ngIf="isLogin">
+      <ion-button shape="round" color="primary" [disabled]="!f.valid">
+        <ion-spinner name="circles"></ion-spinner>
+      </ion-button>
+    </div>
+
+
+    <ion-button *ngIf="!isLogin" expand="block" shape="round"  color="primary" (click)="olhadinha()" >
+      Acesso Rápido
+    </ion-button>
+
+  </form>
+
+
+  <ion-text  color="primary" class="ion-text-center clicavel" routerLink="/cadastrar">
+    <p class="marginTop">
+      Não possui conta?
+      <b>Cadastre-se</b>
+    </p>
+  </ion-text>
+
+</ion-content>

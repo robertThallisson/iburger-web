@@ -1,0 +1,107 @@
+
+<ion-header class="ion-no-border">
+<ion-toolbar color="danger">
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/menu"></ion-back-button>
+  </ion-buttons>
+  <ion-title>
+    <ion-text color="light">
+      <ion-text color="light" class="fw700">{{ nome }}</ion-text>
+    </ion-text>
+  </ion-title>
+
+  <ion-buttons class="bt-pesquisa-bar" slot="end" *ngIf="!ocultarFiltro" >
+    <ion-item no-padding class="animated fadeInUp">
+      <ion-input style="border-bottom: 2px solid white ;" [autofocus]="true" name="value" color="light" type="text"
+        [(ngModel)]="valueInput" (keydown)="onKey($event)"></ion-input>
+    </ion-item>
+
+    <ion-button size="small" shape="round" color="light" (click)="pesquisarClick(valueInput)">
+      <ion-icon name="search"></ion-icon>
+    </ion-button>
+    <ion-button *ngIf="habilitarFiltro" size="small" shape="round" color="light" (click)="habilitarFiltros()">
+      <ion-icon name="list"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<div *ngIf="filtro">
+  <ion-toolbar color="#04ff0c">
+    <ion-grid>
+      <ion-row *ngFor="let gridMenu of service.clausulas">
+        <ion-col *ngFor="let item of gridMenu.list">
+          <ion-item no-padding class="animated fadeInUp" *ngIf="item.component === 'selected'">
+            <ion-label position="floating">{{ item.descricao }}</ion-label>
+            <search-selectable [name]="item.name" [service]="item.service" [(ngModel)]="item.value"></search-selectable>
+          </ion-item>
+
+          <ion-item no-padding class="animated fadeInUp" *ngIf="item.component === 'text'">
+            <ion-label position="floating">{{ item.descricao }}</ion-label>
+            <ion-input [(ngModel)]="item.value" [name]="item.name" type="text"></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="item.component === 'data'" no-padding class="animated fadeInUp">
+            <ion-label position="floating">{{ item.descricao }}</ion-label>
+            <data-mbi [(ngModel)]="item.value" [name]="item.name" [apenasData]="true"></data-mbi>
+          </ion-item>
+
+          <div *ngIf="item.component === 'between_date'" style="display: flex;">
+            <ion-item no-padding class="animated fadeInUp" style="width: 49%;">
+              <ion-label position="floating">{{ item.descricao + ' inicial' }}</ion-label>
+              <data-mbi [(ngModel)]="item.value" [name]="item.name" [apenasData]="true"></data-mbi>
+            </ion-item>
+            <ion-item no-padding class="animated fadeInUp" style="width: 49%;">
+              <ion-label position="floating">{{ item.descricao + ' final' }}</ion-label>
+              <data-mbi [(ngModel)]="item.value2" [name]="item.name2" [apenasData]="true"></data-mbi>
+            </ion-item>
+          </div>
+
+          <div class="div-check-filtro" *ngIf="item.component === 'check'">
+            <ion-label>{{ item.descricao}} </ion-label>
+            <mat-select [(ngModel)]="item.value" [name]="item.name">
+              <mat-option *ngFor="let itemChek of itensCheck" [value]="itemChek.value">
+                {{itemChek.nome}}
+              </mat-option>
+            </mat-select>
+
+          </div>
+
+
+          <ion-item no-padding class="animated fadeInUp" *ngIf="item.component === 'number'">
+            <currency-mbi [(ngModel)]="item.value" [name]="item.name" type="text" [label]="item.descricao">
+            </currency-mbi>
+          </ion-item>
+
+
+          <div *ngIf="item.component === 'between_number'" style="display: flex;">
+            <ion-item no-padding class="animated fadeInUp" style="width: 49%;">
+              <currency-mbi [(ngModel)]="item.value" [name]="item.name" type="text" [label]="item.descricao + ' min.'"
+                [inteiro]="item.inteiro"></currency-mbi>
+            </ion-item>
+            <ion-item no-padding class="animated fadeInUp" style="width: 49%;">
+              <currency-mbi [(ngModel)]="item.value2" [name]="item.name2" type="text" [label]="item.descricao + ' max.'"
+                [inteiro]="item.inteiro"></currency-mbi>
+            </ion-item>
+          </div>
+
+
+          <ion-item no-padding class="animated fadeInUp" *ngIf="item.component === 'select_enum'">
+            <ion-label>{{ item.descricao}} </ion-label>
+            <ion-select [(ngModel)]="item.value" interface="popover">
+              <ion-select-option *ngFor="let item2 of item.service.lista" [value]="item2.tipo">{{ item2.nome }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+        </ion-col>
+
+      </ion-row>
+
+
+    </ion-grid>
+    <ion-button slot="end" size="small" shape="round" color="primary" (click)="filtrar()" style="zoom: 1.5;">
+      <ion-icon name="filter-custom"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</div>
+</ion-header>

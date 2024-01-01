@@ -1,0 +1,20 @@
+<ion-item no-padding class="animated fadeInUp" *ngIf="!limpo">
+  <ion-label position="floating">
+    &nbsp;{{ label + (isRequired ? ' *' : '')}}
+  </ion-label>
+  <ion-input (ionBlur)="saiu($event)" [brmasker]="mask" [(ngModel)]="valor" (ionChange)="onChange($event)" [name]="name" type="tel"
+    [readonly]="readonly"></ion-input>
+
+  <ion-icon class="icon-left2" *ngIf="money" name="dollar-sign-svgrepo-com" color="primary"></ion-icon>
+  <ion-icon class="icon-left2" *ngIf="percent" name="percent-svgrepo-com" color="primary"></ion-icon>
+</ion-item>
+
+<ion-input *ngIf="limpo" (ionBlur)="saiu($event)" [brmasker]="mask" [(ngModel)]="valor" (ionChange)="onChange($event)" [name]="name"
+[readonly]="readonly"></ion-input>
+
+<p [hidden]="!exibirMensagem()" color="danger" class="p-erro" padding-left>
+  <ion-text color="danger">
+    {{ label }} Campo obrigatório
+  </ion-text>
+
+</p>

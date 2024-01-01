@@ -1,0 +1,54 @@
+<ion-content padding class="login auth-page">
+  <custom-menu [(ngModel)]="lista" nome="Endereços" [pesquisar]="service.pesquisar.bind(service)"
+    [pesquisarUltimos]="service.pesquisarUltimosRegistros.bind(service)" pageName="eventos">
+
+  </custom-menu>
+  <div class="card margin-dados">
+
+
+
+    <p-table responsiveLayout="stack" [value]="lista">
+      <ng-template pTemplate="caption">
+        Eventos
+      </ng-template>
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th class="clicavel">Nome</th>
+          <th class="clicavel">Cupom</th>
+          <th class="clicavel">Inicio</th>
+          <th class="clicavel">Fim</th>
+          <th>*</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-item let-columns="columns">
+        <tr>
+          <td>
+            {{item.nome}}
+          </td>
+          <td>
+            {{item.cupom}}
+          </td>
+          <td>
+            {{item.inicio | mbiPipe:'date-full'}}
+          </td>
+          <td>
+            {{item.fim | mbiPipe:'date-full'}}
+          </td>
+          <td class="coluna-botoes-acoes">
+            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+              (click)="editar(item)"></button>
+            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+              (click)="excluir(item)"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+    <div margin-top>
+      <ion-button size="medium" expand="full" shape="round" icon-right tappable (click)="inserir()">
+        Inserir
+        <ion-icon name="checkmark-circle" color="success"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

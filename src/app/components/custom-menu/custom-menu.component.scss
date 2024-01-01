@@ -1,0 +1,32 @@
+ion-toolbar {
+  &.ion-color-primary {
+    --ion-color-base: linear-gradient(
+      135deg,
+      var(--ion-color-dark),
+      var(#04ff0c)
+    ) !important;
+  }
+}
+:host {
+    ion-toolbar {
+        --background: var(--ion-color-primary, #3880ff) ;
+    }
+
+}
+
+:host(.item-interactive.ion-has-focus) {
+  --highlight-background: white;
+}
+
+.cor-fundo {
+  background: var(--ion-color-primary, #3880ff) !important;
+}
+
+
+ion-item[button] {
+  pointer-events: auto !important;
+}
+
+div[cdk-overlay-origin] {
+  height: 30px;
+}

@@ -1,0 +1,28 @@
+<ion-toolbar  class="cor-fundo">
+  <ion-buttons slot="end">
+    <ion-button size="small" shape="round" color="light" (click)="habilitarFiltro()">
+      <ion-icon name="list"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-toolbar  class="cor-fundo">
+  <ion-buttons slot="start">
+    <ion-back-button text="" defaultHref="home"></ion-back-button>
+  </ion-buttons>
+  <ion-title>
+    <ion-text color="light">
+      <ion-text color="light" class="fw700">{{ nome }}</ion-text>
+    </ion-text>
+  </ion-title>
+
+  <ion-buttons slot="end">
+    <ion-item no-padding class="animated fadeInUp">
+      <ion-input name="value" color="light" type="text"  ></ion-input>
+    </ion-item>
+
+    <ion-button size="small" shape="round" color="light">
+      <ion-icon name="search"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>

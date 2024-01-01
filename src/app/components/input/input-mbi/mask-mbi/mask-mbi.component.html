@@ -1,0 +1,15 @@
+<ion-item no-padding class="animated fadeInUp">
+  <ion-label position="floating">
+    &nbsp;{{ label + (isRequired ? ' *' : '')}}
+  </ion-label>
+  <ion-input (ionBlur)="saiu($event)" [placeholder]="getPlaceHolder()"  [brmasker]="mask"  [(ngModel)]="value" [name]="name" [type]="type" (ionChange)="onChange($event)">
+
+  </ion-input>
+</ion-item>
+
+<p [hidden]="!exibirMensagem()"  color="danger" class="p-erro" padding-left>
+  <ion-text color="danger">
+    {{ label }}  Campo obrigatório
+  </ion-text>
+
+</p>

@@ -1,0 +1,10 @@
+<div class="tab">
+
+
+  <button *ngFor="let item of labels; let i = index" class="tablinks" size="small" shape="round" color="primary"
+    icon-right tappable (click)="selecionarDiv(i)">
+    <ion-icon name="create" color="warning"></ion-icon>
+    {{ item }}
+  </button>
+
+</div>

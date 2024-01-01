@@ -1,0 +1,4 @@
+<ion-input  #texto [name]="name" pTooltip="Precione P: primeiro dia do mês, O: dia anterior, H: dia atual, A: próximo dia, F: último dia do mês"
+tooltipPosition="top" placeholder="Top" [brmasker]="{mask: mask, type:'num', len: mask.length}" [(ngModel)]="innerValue"
+    [placeholder]="placeH" (ionChange)="onChange($event)" (ionBlur)="onBlur($event)" (keydown)="keyDownData($event)"
+    (dblclick)="abrir()"></ion-input>

@@ -1,0 +1,35 @@
+<div (keydown)="keyDown($event)" style="width: 100% !" [ngStyle]="{'height': getStyle() }" class="clicavel "
+  [ngClass]="{ 'itemconfiguration': isMultiple}">
+
+
+
+  <ion-icon class="icon-left2" name="arrow-down" color="primary"></ion-icon>
+  <ion-icon class="icon-left" name="close-circle" *ngIf="!base._isNullOrWhiteSpace(value)" color="danger"
+    (click)="deletar()"></ion-icon>
+  <ion-input #pesquisa (click)="pesquisarItens($event)" [(ngModel)]="valor" [name]="name" *ngIf="!isMultiple || !temItem()"
+    value="{{ nameShow ? nameShow : ' '  }}" readonly></ion-input>
+
+  <span *ngIf="isMultiple && temItem() && value.length > 0">
+    <table MatTableModule class="mat-elevation-z8 demo-table">
+      <thead style="height: 1px; width: 1px; position: absolute; overflow: hidden; top: -10px;">
+        <tr>
+          <th style="width: 70px;">Id</th>
+          <th>Nome</th>
+          <th style="width: 70px;">*</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let item of value; let i = index">
+        <td (click)="pesquisarItens($event)">{{ item[itemValueField] }}</td>
+        <td (click)="pesquisarItens($event)">{{ getNome(item) }}</td>
+        <td style="float: right;margin-right: 5%;">
+          <ion-button size="small" shape="round" color="primary" icon-right tappable (click)="excluir(i)">
+            <ion-icon name="trash" color="danger"></ion-icon>
+          </ion-button>
+        </td>
+      </tr>
+    </table>
+
+
+  </span>
+
+</div>

@@ -1,0 +1,13 @@
+<ion-list>
+  <ion-item *ngFor="let item of value; let i = index " class="clicavel" (click)="onClick(i)">
+    <ion-button slot="start" size="small" shape="round" color="light">
+      <div *ngIf="!item[fieldValue]" class="icon-inner">
+        <ion-icon name="radio-button-off" color="primary"></ion-icon>
+      </div>
+      <div *ngIf="item[fieldValue]"  class="icon-inner">
+        <ion-icon name="radio-button-on" color="primary"></ion-icon>
+      </div>
+    </ion-button>
+    {{ getNome(item)  }}
+  </ion-item>
+</ion-list>

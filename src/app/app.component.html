@@ -1,0 +1,7 @@
+<script src="https://assets.pagseguro.com.br/checkout-sdk-js/rc/dist/browser/pagseguro.min.js" ></script>
+<ion-app>
+  <p-toast position="center" key="tc" ></p-toast>
+  <p-confirmDialog [style]="{width: '80vw'}" [acceptLabel]="'Sim'" [rejectLabel]="'Não'" [baseZIndex]="10000"
+    rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+  <ion-router-outlet></ion-router-outlet>
+</ion-app>

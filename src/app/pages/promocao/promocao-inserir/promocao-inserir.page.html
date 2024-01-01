@@ -1,0 +1,63 @@
+<ion-content>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <form>
+    <div class="ui-fluid margin-inserir">
+      <div class="p-grid forms-grid">
+        <div class="p-col-12 p-md-6">
+          <input-mbi name="nome" [(ngModel)]="value.nome" label="Nome">
+          </input-mbi>
+        </div>
+
+        <div class="p-col-12 p-md-6">
+          <input-mbi name="cupom" [(ngModel)]="value.cupom" label="Cupom">
+          </input-mbi>
+        </div>
+
+        <div class="p-col-12 p-md-6">
+          <input-mbi name="texto" [(ngModel)]="value.texto" label="Texto">
+          </input-mbi>
+        </div>
+
+        <div class="p-col-12 p-md-6">
+          <ion-item no-padding class="animated fadeInUp">
+            <ion-label position="floating"> &nbsp; Inicio </ion-label>
+            <data-mbi
+              [(ngModel)]="value.inicio"
+              [apenasData]="false"
+              name="inico"
+            >
+            </data-mbi>
+          </ion-item>
+        </div>
+
+        <div class="p-col-12 p-md-6">
+          <ion-item no-padding class="animated fadeInUp">
+            <ion-label position="floating"> &nbsp; Fim </ion-label>
+            <data-mbi [(ngModel)]="value.fim" [apenasData]="false" name="fim">
+            </data-mbi>
+          </ion-item>
+        </div>
+
+        <div class="div-botao-salvar">
+          <ion-button
+            size="medium"
+            expand="full"
+            shape="round"
+            color="primary"
+            icon-right
+            tappable
+            (click)="salvar()"
+          >
+            Salvar
+            <ion-icon name="checkmark-circle" color="success"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ion-content>
