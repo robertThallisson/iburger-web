@@ -20,6 +20,9 @@ import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@aw
 import { CidadeService } from '../../service/pop-farma/cidade.service';
 import { Cidade } from '../../model/objetc/cidade';
 import { Platform } from '@ionic/angular';
+import { EmpresaService } from '../../service/pop-farma/empresa.service';
+import { _isNullOrWhiteSpace } from '../../funcoes/funcoes';
+import { Empresa } from '../../model/objetc/empresa';
 
 declare var google;
 
@@ -44,6 +47,8 @@ export class CadastrarPage extends BaseInserir<Usuario> implements OnInit {
 
 
   map: any;
+
+  tipoUsuario  = 0;
   constructor(
     private autentificacaoService: AutentificacaoService,
     private router: Router,
@@ -51,7 +56,8 @@ export class CadastrarPage extends BaseInserir<Usuario> implements OnInit {
     public usuarioService: UsuarioService,
     private nativeGeocoder: NativeGeocoder,
     private cidadeService: CidadeService,
-    public platform: Platform
+    public platform: Platform,
+    private empresaService: EmpresaService
   ) {
     super(base, usuarioService);
     this.value.pessoa = new Pessoa();
@@ -60,7 +66,6 @@ export class CadastrarPage extends BaseInserir<Usuario> implements OnInit {
   }
 
   ngOnInit() {
-    this.getGeoLocation();
     this.base.present();
     try {
       this.autentificacaoService.getNewTokenRegisto().subscribe(
@@ -196,14 +201,14 @@ export class CadastrarPage extends BaseInserir<Usuario> implements OnInit {
   }
 
   nextStep() {
-    if (this.selectedIndex !== 1) {
+    if (this.selectedIndex < 2) {
       this.selectedIndex = this.selectedIndex + 1;
     }
     console.log(this.selectedIndex);
   }
 
   previousStep() {
-    if (this.selectedIndex !== 0) {
+    if (this.selectedIndex > 0) {
       this.selectedIndex = this.selectedIndex - 1;
     }
     console.log(this.selectedIndex);
@@ -214,6 +219,57 @@ export class CadastrarPage extends BaseInserir<Usuario> implements OnInit {
   }
 
 
+  retorno(id?: string): void {
+    const empresa: Empresa = new Empresa();
+
+    empresa.pessoa = this.value.pessoa;
+    if (this.value.temEmpresa) {
+      if (!this.validar()) {
+        return;
+      }
+
+      this.base.present();
+      try {
+        this.beforeSave();
+        this.service.salvar(this.value).subscribe(
+          data => {
+            this.base.menssagemSucesso('Registro salvo com sucesso ' + data[id]);
+            this.afterSave();
+            this.base.dismiss();
+          },
+          error => {
+            this.base.dismiss();
+
+            this.base.mensagemErro('Erro ao salvar \n' + this.base.tratarErro(error));
+          }
+        );
+      } catch (error) {
+        this.base.dismiss();
+        if (_isNullOrWhiteSpace(this.service)) {
+          this.base.mensagemErro('Erro service não declarado');
+        } else {
+          this.base.mensagemErro('Erro service não declarado', error);
+        }
+
+      }
+
+
+    } else {
+      super.salvar(id);
+    }
+
+  }
+
+
+  comEmpresa() {
+    this.value.temEmpresa = true;
+    this.nextStep();
+  }
+
+  semEmpresa() {
+    this.value.temEmpresa = false;
+    this.nextStep();
+  }
   afterSave(): void {
     this.autentificacaoService.token = null;
     this.router.navigate(['']);

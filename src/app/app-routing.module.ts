@@ -10,52 +10,70 @@ const routes: Routes = [
   {
     path: 'menu',
     loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule),
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
   },
   {
     path: 'home',
     redirectTo: 'menu',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'cadastrar',
-    loadChildren: () => import('./login/cadastrar/cadastrar.module').then( m => m.CadastrarPageModule)
+    loadChildren: () => import('./login/cadastrar/cadastrar.module').then( m => m.CadastrarPageModule),
+  },
+  {
+    path: 'eventos',
+    loadChildren: () => import('./pages/evento/eventos/eventos.module').then( m => m.EventosPageModule),
+    canActivate: [AuthGuardService],
   },
   {
     path: 'evento-inserir',
-    loadChildren: () => import('./pages/evento/evento-inserir/evento-inserir.module').then( m => m.EventoInserirPageModule)
+    loadChildren: () => import('./pages/evento/evento-inserir/evento-inserir.module').then( m => m.EventoInserirPageModule),
+    canActivate: [AuthGuardService],
   },
   {
     path: 'banners',
-    loadChildren: () => import('./pages/banner/banners/banners.module').then( m => m.BannersPageModule)
+    loadChildren: () => import('./pages/banner/banners/banners.module').then( m => m.BannersPageModule),
+    canActivate: [AuthGuardService],
   },
   {
     path: 'banner-inserir',
-    loadChildren: () => import('./pages/banner/banner-inserir/banner-inserir.module').then( m => m.BannerInserirPageModule)
+    loadChildren: () => import('./pages/banner/banner-inserir/banner-inserir.module').then( m => m.BannerInserirPageModule),
+    canActivate: [AuthGuardService],
   },
   {
     path: 'destaques',
-    loadChildren: () => import('./pages/destaque/destaques/destaques.module').then( m => m.DestaquesPageModule)
+    loadChildren: () => import('./pages/destaque/destaques/destaques.module').then( m => m.DestaquesPageModule),
+    canActivate: [AuthGuardService],
   },
   {
     path: 'destaque-inserir',
-    loadChildren: () => import('./pages/destaque/destaque-inserir/destaque-inserir.module').then( m => m.DestaqueInserirPageModule)
+    loadChildren: () => import('./pages/destaque/destaque-inserir/destaque-inserir.module').then( m => m.DestaqueInserirPageModule),
+    canActivate: [AuthGuardService],
   },
   {
     path: 'dicas',
-    loadChildren: () => import('./pages/dica/dicas/dicas.module').then( m => m.DicasPageModule)
+    loadChildren: () => import('./pages/dica/dicas/dicas.module').then( m => m.DicasPageModule),
+    canActivate: [AuthGuardService],
   },
   {
     path: 'dica-inserir',
-    loadChildren: () => import('./pages/dica/dica-inserir/dica-inserir.module').then( m => m.DicaInserirPageModule)
+    loadChildren: () => import('./pages/dica/dica-inserir/dica-inserir.module').then( m => m.DicaInserirPageModule),
+    canActivate: [AuthGuardService],
   },
   {
     path: 'promocoes',
-    loadChildren: () => import('./pages/promocao/promocoes/promocoes.module').then( m => m.PromocoesPageModule)
+    loadChildren: () => import('./pages/promocao/promocoes/promocoes.module').then( m => m.PromocoesPageModule),
+    canActivate: [AuthGuardService],
   },
   {
     path: 'promocao-inserir',
-    loadChildren: () => import('./pages/promocao/promocao-inserir/promocao-inserir.module').then( m => m.PromocaoInserirPageModule)
+    loadChildren: () => import('./pages/promocao/promocao-inserir/promocao-inserir.module').then( m => m.PromocaoInserirPageModule),
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'visualizacao',
+    loadChildren: () => import('./pages/visualizacao/visualizacao.module').then( m => m.VisualizacaoPageModule)
   }
 ];
 

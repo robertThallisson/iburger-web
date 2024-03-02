@@ -1,6 +1,6 @@
 <ion-content padding class="login auth-page">
-  <custom-menu [(ngModel)]="lista" nome="Banners" [pesquisar]="service.pesquisar.bind(service)"
-    [pesquisarUltimos]="service.pesquisarUltimosRegistros.bind(service)" pageName="banners">
+  <custom-menu [(ngModel)]="lista" nome="Dicas" [pesquisar]="service.pesquisar.bind(service)"
+    [pesquisarUltimos]="service.pesquisarUltimosRegistros.bind(service)" pageName="dicas">
 
   </custom-menu>
   <div class="card margin-dados">
@@ -9,7 +9,7 @@
 
     <p-table responsiveLayout="stack" [value]="lista">
       <ng-template pTemplate="caption">
-        Banner
+        Dicas
       </ng-template>
       <ng-template pTemplate="header" let-columns>
         <tr>
@@ -20,16 +20,7 @@
       <ng-template pTemplate="body" let-item let-columns="columns">
         <tr>
           <td>
-            {{item.empresa.pessoa.nome}}
-          </td>
-          <td>
             {{item.texto}}
-          </td>
-          <td>
-            {{item.inicio | mbiPipe:'date-full'}}
-          </td>
-          <td>
-            {{item.fim | mbiPipe:'date-full'}}
           </td>
           <td class="coluna-botoes-acoes">
             <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"

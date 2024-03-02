@@ -11,6 +11,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { NativeGeocoder } from '@awesome-cordova-plugins/native-geocoder/ngx';
 import { BrMaskerModule } from 'br-mask';
 import { DataInputModule } from '../../components/data-input/data-input.module';
+import { ButtonModule } from 'primeng/button';
 @NgModule({
   imports: [
     CommonModule,
@@ -19,7 +20,8 @@ import { DataInputModule } from '../../components/data-input/data-input.module';
     CadastrarPageRoutingModule,
     MatTabsModule,
     BrMaskerModule,
-    DataInputModule
+    DataInputModule,
+    ButtonModule
   ],
   declarations: [CadastrarPage],
   providers: [

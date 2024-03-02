@@ -1,14 +1,14 @@
 ion-header {
   ion-icon {
-      font-size: 1rem;
+    font-size: 1rem;
   }
 }
 ion-label {
   h4 {
-      font-size: 1.2rem;
+    font-size: 1.2rem;
   }
   p {
-      font-size: 0.7rem;
+    font-size: 0.7rem;
   }
 }
 
@@ -18,3 +18,110 @@ ion-label {
   border-bottom: 1px solid black;
 }
 
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+.banner {
+  width: 100%;
+  height: 150px;
+  background-color: #ccc;
+  margin-bottom: 20px;
+}
+.container-flex {
+  display: flex;
+  justify-content: space-around;
+  margin: 1px;
+}
+
+.container {
+  justify-content: space-around;
+}
+
+.flex {
+  display: flex;
+  margin: 1px;
+}
+
+.promo {
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px;
+}
+.column {
+  width: 100%;
+}
+
+.column-99 {
+  width: 99%;
+}
+.column-25 {
+  width: 25%;
+}
+.column-30 {
+  width: 30%;
+}
+.column-50 {
+  width: 50%;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.destaques {
+  display: flex;
+  justify-content: space-around;
+}
+.eventos {
+  list-style-type: none;
+  padding: 0;
+}
+.eventos li {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.margin {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.borda {
+  border-width: 0.01px;
+  border-color: black;
+  border-style: solid;
+  border-radius: 20px;
+}
+
+.borda-1 {
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  border-radius: 20px;
+}
+
+
+.simple-bord {
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+}
+
+.img-hamburgueria {
+  height: 100px;;
+}

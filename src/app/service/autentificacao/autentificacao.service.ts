@@ -13,7 +13,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
   providedIn: 'root'
 })
 export class AutentificacaoService {
-  //public url: string = 'https://192.168.17.1:8080';
+  //public url: string = 'http://192.168.17.1:8080';
   public url: string = 'http://192.168.3.11:8080';
 
   //public url: string = 'https://appfarmanciafacil.tech:8080';

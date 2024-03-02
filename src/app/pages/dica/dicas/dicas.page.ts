@@ -20,7 +20,7 @@ export class DicasPage extends BaseDados<Dica> implements OnInit {
     public service: DicaService,
   ) {
     super(base,confirmationService, router, service);
-    this.urlInserir = 'evento-inserir';
+    this.urlInserir = 'dica-inserir';
     this.desativarUsandoAtivo = false;
   }
 

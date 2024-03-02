@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Usuario } from './usuario';
 import { Empresa } from './empresa';
 
@@ -5,7 +6,7 @@ export class Destaque {
   id: number;
 	imagem: any;
 	link: string;
-	prioridade: boolean;
+	prioridade: boolean = false;
 	ativo: boolean;
 	usuario: Usuario;
 	empresa: Empresa;

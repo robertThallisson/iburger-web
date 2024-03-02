@@ -4,4 +4,6 @@ export class Usuario {
     senha: string;
     pessoa: Pessoa;
     email: string;
+    temEmpresa: boolean;
+    dataCadastro: any;
 }

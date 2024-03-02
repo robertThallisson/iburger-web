@@ -2,7 +2,7 @@
 
   <div class="div-principal">
 
-    <ion-img style="width: 200px;margin: auto;" src="assets/icon/logo.png"></ion-img>
+    <ion-img style="width: 200px;margin: auto;" src="assets/imagens/hamburguer.webp"></ion-img>
 
   </div>
 
@@ -12,7 +12,7 @@
 
       <div class="ion-margin-bottom">
         <ion-item color="light">
-          <ion-icon name="mail" slot="start" color="primary"></ion-icon>
+          <ion-icon name="mail" slot="start" color="warning"></ion-icon>
           <ion-input type="input" name="email" ngModel #emailCtrl="ngModel" placeholder="Email" required>
           </ion-input>
         </ion-item>
@@ -22,8 +22,8 @@
       </div>
 
       <ion-item color="light">
-        <ion-icon name="key" slot="start" color="primary"></ion-icon>
-        <ion-icon color="primary" slot="end" (click)="changeType()" [name]="type ? 'eye-outline' : 'eye-off-outline'">
+        <ion-icon name="key" slot="start" color="warning"></ion-icon>
+        <ion-icon color="warning" slot="end" (click)="changeType()" [name]="type ? 'eye-outline' : 'eye-off-outline'">
         </ion-icon>
         <ion-input [type]="type ? 'password' : 'text'" name="senha" ngModel #senhaCtrl="ngModel"
           placeholder="senha" required minlength="3">
@@ -39,25 +39,25 @@
       <span routerLink="/login/forgot-password">Esqueceu a senha?</span>
     </p>
 
-    <ion-button *ngIf="!isLogin" [disabled]="!f.valid" expand="block" shape="round" type="submit" color="primary">
+    <ion-button *ngIf="!isLogin" [disabled]="!f.valid" expand="block" shape="round" type="submit" color="warning">
       Entrar
     </ion-button>
 
     <div class="ion-text-center" *ngIf="isLogin">
-      <ion-button shape="round" color="primary" [disabled]="!f.valid">
+      <ion-button shape="round" color="warning" [disabled]="!f.valid">
         <ion-spinner name="circles"></ion-spinner>
       </ion-button>
     </div>
 
 
-    <ion-button *ngIf="!isLogin" expand="block" shape="round"  color="primary" (click)="olhadinha()" >
+    <ion-button *ngIf="!isLogin" expand="block" shape="round"  color="warning" (click)="olhadinha()" >
       Acesso Rápido
     </ion-button>
 
   </form>
 
 
-  <ion-text  color="primary" class="ion-text-center clicavel" routerLink="/cadastrar">
+  <ion-text  color="warning" class="ion-text-center clicavel" routerLink="/cadastrar">
     <p class="marginTop">
       Não possui conta?
       <b>Cadastre-se</b>

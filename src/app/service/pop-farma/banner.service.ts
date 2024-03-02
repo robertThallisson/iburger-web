@@ -13,6 +13,6 @@ export class BannerService extends BaseService<Banner>  {
     public as: AutentificacaoService
   ) {
     super(http, as);
-    this.url = '/produto';
+    this.url = '/banner';
   }
 }

@@ -32,4 +32,10 @@ export class InserirEnderecoComponent extends BaseInserir<Endereco> implements O
       this.modalController.dismiss({ dismiss: true, valor: 'add' });
     }
   }
+
+
+  afterLoader(): void {
+    //  throw new Error('Method not implemented.');
+    }
+
 }

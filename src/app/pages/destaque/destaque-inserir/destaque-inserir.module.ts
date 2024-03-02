@@ -9,6 +9,7 @@ import { DestaqueInserirPageRoutingModule } from './destaque-inserir-routing.mod
 import { DestaqueInserirPage } from './destaque-inserir.page';
 import { InputMbiModule } from '../../../components/input/input-mbi/input-mbi.module';
 import { SearchSelectableModule } from '../../../components/search-selectable/search-selectable.module';
+import { DataInputModule } from '../../../components/data-input/data-input.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +17,8 @@ import { SearchSelectableModule } from '../../../components/search-selectable/se
     IonicModule,
     DestaqueInserirPageRoutingModule,
     InputMbiModule,
-    SearchSelectableModule
+    SearchSelectableModule,
+    DataInputModule
   ],
   declarations: [DestaqueInserirPage]
 })

@@ -4,18 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { VisualizacaoPageRoutingModule } from './visualizacao-routing.module';
 
-import { HomePage } from './home.page';
-import { CarouselModule } from 'primeng/carousel';
+import { VisualizacaoPage } from './visualizacao.page';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
-    CarouselModule
+    VisualizacaoPageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [VisualizacaoPage]
 })
-export class HomePageModule {}
+export class VisualizacaoPageModule {}

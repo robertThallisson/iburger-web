@@ -20,7 +20,7 @@ export class DestaquesPage extends BaseDados<Destaque> implements OnInit {
     public service: DestaqueService,
   ) {
     super(base,confirmationService, router, service);
-    this.urlInserir = 'evento-inserir';
+    this.urlInserir = 'destaque-inserir';
     this.desativarUsandoAtivo = false;
   }
 

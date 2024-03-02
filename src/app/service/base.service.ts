@@ -30,4 +30,8 @@ export abstract class BaseService<T> {
     return this.http.delete<any>(this.as.url + this.url + '/remover/' + value[id], this.as.getOptions());
   }
 
+  getByCidade() {
+    return this.http.get<Array<T>>(this.as.url + this.url + '/pesquisarbycidade/976', this.as.getOptions());
+  }
+
 }

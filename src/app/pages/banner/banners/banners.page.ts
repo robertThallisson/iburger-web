@@ -20,7 +20,7 @@ export class BannersPage extends BaseDados<Banner> implements OnInit {
     public service: BannerService,
   ) {
     super(base,confirmationService, router, service);
-    this.urlInserir = 'evento-inserir';
+    this.urlInserir = 'banner-inserir';
     this.desativarUsandoAtivo = false;
   }
 

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="danger">
+  <ion-toolbar color="warning">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
@@ -10,114 +10,133 @@
 <ion-content class="ion-padding">
   <mat-tab-group animationDuration="2000ms" [selectedIndex]="selectedIndex" (selectedIndexChange)="mudouTab($event)">
 
+
+    <mat-tab label="Tipo">
+      <div style="text-align: center;">
+
+        <div class="lado">
+          <button pButton  icon="pi pi-user" class="full"
+          (click)="semEmpresa()">Usuario &nbsp;&nbsp;</button>
+
+        </div>
+
+        <div class="lado">
+          <button pButton  icon="pi pi-building" class="full"
+          (click)="comEmpresa()"> Hamburgeria &nbsp;&nbsp;</button>
+
+        </div>
+
+      </div>
+
+    </mat-tab>
     <mat-tab label="Usuario">
       <form #f1="ngForm" (ngSubmit)="onSubmit(f1)">
         <ion-list lines="none">
           <div class="ion-margin-bottom">
             <ion-item color="light">
-              <ion-icon name="person" slot="start" color="primary"></ion-icon>
+              <ion-icon name="person" slot="start" color="warning"></ion-icon>
               <ion-input type="text" name="name" [(ngModel)]="value.pessoa.nome" ngModel #name="ngModel"
                 placeholder="Nome" required>
               </ion-input>
             </ion-item>
-            <ion-text color="danger" *ngIf="!name.valid && name.touched">
+            <ion-text color="warning" *ngIf="!name.valid && name.touched">
               <p class="errorMsg">* Nome invalido</p>
             </ion-text>
           </div>
 
           <div class="ion-margin-bottom">
             <ion-item color="light">
-              <ion-icon name="person" slot="start" color="primary"></ion-icon>
+              <ion-icon name="person" slot="start" color="warning"></ion-icon>
               <ion-input type="text" name="login" [(ngModel)]="value.login" ngModel #login="ngModel" placeholder="Usuário"
                 required>
               </ion-input>
             </ion-item>
-            <ion-text color="danger" *ngIf="!login.valid && login.touched">
+            <ion-text color="warning" *ngIf="!login.valid && login.touched">
               <p class="errorMsg">* Nome invalido</p>
             </ion-text>
           </div>
 
           <div class="ion-margin-bottom">
             <ion-item color="light">
-              <ion-icon name="person" slot="start" color="primary"></ion-icon>
+              <ion-icon name="person" slot="start" color="warning"></ion-icon>
               <ion-input type="tel" [brmasker]="{person: true}" name="cpf" [(ngModel)]="value.pessoa.cpfCnpj" ngModel #cpf="ngModel" placeholder="CPF"
                 required>
               </ion-input>
             </ion-item>
-            <ion-text color="danger" *ngIf="!cpf.valid && cpf.touched">
+            <ion-text color="warning" *ngIf="!cpf.valid && cpf.touched">
               <p class="errorMsg">* cpf invalido</p>
             </ion-text>
           </div>
 
           <div class="ion-margin-bottom">
             <ion-item color="light">
-              <ion-icon name="mail" slot="start" color="primary"></ion-icon>
+              <ion-icon name="mail" slot="start" color="warning"></ion-icon>
               <ion-input type="email" name="email" [(ngModel)]="value.email" ngModel email #emailCtrl="ngModel"
                 placeholder="Email" required>
               </ion-input>
             </ion-item>
-            <ion-text color="danger" *ngIf="!emailCtrl.valid && emailCtrl.touched">
+            <ion-text color="warning" *ngIf="!emailCtrl.valid && emailCtrl.touched">
               <p class="errorMsg">* email invalido</p>
             </ion-text>
           </div>
 
           <div class="ion-margin-bottom">
             <ion-item color="light">
-              <ion-icon name="call" slot="start" color="primary"></ion-icon>
+              <ion-icon name="call" slot="start" color="warning"></ion-icon>
               <ion-input type="tel" [brmasker]="{phone: true}" name="phone" [(ngModel)]="value.pessoa.telefone" ngModel
                 #phone="ngModel" placeholder="Telefone" required minlength="14" maxlength="15">
               </ion-input>
             </ion-item>
-            <ion-text color="danger" *ngIf="!phone.valid && phone.touched">
+            <ion-text color="warning" *ngIf="!phone.valid && phone.touched">
               <p class="errorMsg">* telefone invalido</p>
             </ion-text>
           </div>
 
           <div class="ion-margin-bottom">
             <ion-item color="light">
-              <ion-icon name="calendar" slot="start" color="primary"></ion-icon>
+              <ion-icon name="calendar" slot="start" color="warning"></ion-icon>
               <ion-input type="text" [brmasker]="{mask:'DD/MM/YYYY',type:'num', len:10}" name="aniversario"
                 [(ngModel)]="value.pessoa.dataNascimento" ngModel #aniversario="ngModel" placeholder="Data aniversário">
               </ion-input>
             </ion-item>
-            <ion-text color="danger" *ngIf="!aniversario.valid && aniversario.touched">
+            <ion-text color="warning" *ngIf="!aniversario.valid && aniversario.touched">
               <p class="errorMsg">* data de aniversario invalido</p>
             </ion-text>
           </div>
 
           <div class="ion-margin-bottom">
             <ion-item color="light">
-              <ion-icon name="key" slot="start" color="primary"></ion-icon>
+              <ion-icon name="key" slot="start" color="warning"></ion-icon>
               <ion-input type="password" name="password" [(ngModel)]="value.senha" ngModel #passwordCtrl="ngModel"
                 placeholder="Senha" required minlength="4">
               </ion-input>
             </ion-item>
-            <ion-text color="danger" *ngIf="!passwordCtrl.valid && passwordCtrl.touched">
+            <ion-text color="warning" *ngIf="!passwordCtrl.valid && passwordCtrl.touched">
               <p class="errorMsg">* senha invalida</p>
             </ion-text>
           </div>
 
           <ion-item color="light">
-            <ion-icon name="key" slot="start" color="primary"></ion-icon>
+            <ion-icon name="key" slot="start" color="warning"></ion-icon>
             <ion-input type="password" name="c_password" ngModel #c_passwordCtrl="ngModel"
               placeholder="Confirme sua senha" required minlength="6">
             </ion-input>
           </ion-item>
-          <ion-text color="danger" *ngIf="!c_passwordCtrl.valid && c_passwordCtrl.touched">
+          <ion-text color="warning" *ngIf="!c_passwordCtrl.valid && c_passwordCtrl.touched">
             <p class="errorMsg">* senha invalida.</p>
           </ion-text>
-          <ion-text color="danger" *ngIf="c_passwordCtrl.valid && c_passwordCtrl.value !== passwordCtrl.value">
+          <ion-text color="warning" *ngIf="c_passwordCtrl.valid && c_passwordCtrl.value !== passwordCtrl.value">
             <p class="errorMsg">* senhas diferentes.</p>
           </ion-text>
         </ion-list>
 
         <ion-button *ngIf="!isLoading" [disabled]="!f1.valid || (c_passwordCtrl.value !== passwordCtrl.value)"
-          expand="block" shape="round" type="submit" color="primary">
+          expand="block" shape="round" type="submit" color="warning">
           Próxima etapa
         </ion-button>
 
         <div class="ion-text-center" *ngIf="isLoading">
-          <ion-button shape="round" color="primary"
+          <ion-button shape="round" color="warning"
             [disabled]="!f1.valid || (c_passwordCtrl.value !== passwordCtrl.value)">
             <ion-spinner name="circles"></ion-spinner>
           </ion-button>
@@ -130,7 +149,7 @@
         <ion-list lines="none">
           <div class="ion-margin-bottom" *ngIf="value.pessoa.cidade">
             <ion-item color="light">
-              <ion-icon name="street-view" slot="start" color="primary"></ion-icon>
+              <ion-icon name="street-view" slot="start" color="warning"></ion-icon>
               <ion-input type="text" name="cidade" [(ngModel)]="value.pessoa.cidade.nome" ngModel #cidade="ngModel"
                 placeholder="Cidade" disabled>
               </ion-input>
@@ -141,7 +160,7 @@
           <!--
           <div class="ion-margin-bottom" *ngIf="false" >
             <ion-item color="light">
-              <ion-icon name="street-view" slot="start" color="primary"></ion-icon>
+              <ion-icon name="street-view" slot="start" color="warning"></ion-icon>
               <ion-input type="text" name="cep" [(ngModel)]="cep" ngModel #cep="ngModel"
                 placeholder="Cidade" [brmasker]="{mask:'00.000-000', len:10, userCaracters: true}" >
               </ion-input>
@@ -150,12 +169,12 @@
           </div>-->
           <div class="ion-margin-bottom">
             <ion-item color="light">
-              <ion-icon name="street-view" slot="start" color="primary"></ion-icon>
+              <ion-icon name="street-view" slot="start" color="warning"></ion-icon>
               <ion-input type="text" name="rua" [(ngModel)]="endereco.rua" ngModel #rua="ngModel" placeholder="Rua"
                 required>
               </ion-input>
             </ion-item>
-            <ion-text color="danger" *ngIf="!rua.valid && rua.touched">
+            <ion-text color="warning" *ngIf="!rua.valid && rua.touched">
               <p class="errorMsg">* rua invalido</p>
             </ion-text>
           </div>
@@ -163,12 +182,12 @@
 
           <div class="ion-margin-bottom">
             <ion-item color="light">
-              <ion-icon name="street-view" slot="start" color="primary"></ion-icon>
+              <ion-icon name="street-view" slot="start" color="warning"></ion-icon>
               <ion-input type="text" name="numero" [(ngModel)]="endereco.numero" ngModel #numero="ngModel"
                 placeholder="Número" required>
               </ion-input>
             </ion-item>
-            <ion-text color="danger" *ngIf="!numero.valid && numero.touched">
+            <ion-text color="warning" *ngIf="!numero.valid && numero.touched">
               <p class="errorMsg">* Nome invalido</p>
             </ion-text>
           </div>
@@ -176,18 +195,18 @@
 
 		  <div class="ion-margin-bottom">
             <ion-item color="light">
-              <ion-icon name="street-view" slot="start" color="primary"></ion-icon>
+              <ion-icon name="street-view" slot="start" color="warning"></ion-icon>
               <ion-input type="text" name="bairro" [(ngModel)]="endereco.bairro" ngModel #bairro="ngModel"
                 placeholder="Bairro" required>
               </ion-input>
             </ion-item>
-            <ion-text color="danger" *ngIf="!bairro.valid && bairro.touched">
+            <ion-text color="warning" *ngIf="!bairro.valid && bairro.touched">
               <p class="errorMsg">* Nome invalido</p>
             </ion-text>
           </div>
         </ion-list>
         <ion-button *ngIf="!isLoading" [disabled]="!f1.valid || (c_passwordCtrl.value !== passwordCtrl.value)"
-          expand="block" shape="round" type="submit" color="primary" (click)="salvar()">
+          expand="block" shape="round" type="submit" color="warning" (click)="salvar()">
           Finalizar
         </ion-button>
 
@@ -209,6 +228,7 @@
         </div>
       </form>
     </mat-tab>
+
   </mat-tab-group>
 
 </ion-content>
