@@ -20,18 +20,23 @@ import { MBIPipe } from './pipes/mbi.pipe';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications/ngx';
 import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
+import { VisualizacaoPage } from './pages/visualizacao/visualizacao.page';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotificationsComponent,
     CustomListModalPage,
-    PesquisarItemPage
+    PesquisarItemPage,
+    VisualizacaoPage
   ],
   entryComponents: [
     NotificationsComponent,
     CustomListModalPage,
-    PesquisarItemPage
+    PesquisarItemPage,
+    VisualizacaoPage
+
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,8 @@ import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    ImageCropperModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

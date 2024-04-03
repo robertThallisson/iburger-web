@@ -11,6 +11,7 @@ import { PhotoService } from '../../../services/photo.service';
   styleUrls: ['./evento-inserir.page.scss'],
 })
 export class EventoInserirPage extends BaseInserir<Evento> implements OnInit {
+  croppedImage: string;
 
   constructor(
     public base: Base,
@@ -34,9 +35,12 @@ export class EventoInserirPage extends BaseInserir<Evento> implements OnInit {
     if (files && file) {
       const reader = new FileReader();
 
-      reader.onload = this.converteToBase64Depois.bind(this);
+      if (file) {
+        reader.readAsDataURL(file);
+        reader.onload = this.converteToBase64Depois.bind(this);
 
-      reader.readAsBinaryString(file);
+        reader.readAsBinaryString(file);
+      }
     }
   }
 

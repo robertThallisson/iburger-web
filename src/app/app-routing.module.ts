@@ -74,6 +74,10 @@ const routes: Routes = [
   {
     path: 'visualizacao',
     loadChildren: () => import('./pages/visualizacao/visualizacao.module').then( m => m.VisualizacaoPageModule)
+  },
+  {
+    path: 'perfil-usuario-inserir',
+    loadChildren: () => import('./pages/perfil-usuario/perfil-usuario-inserir/perfil-usuario-inserir.module').then( m => m.PerfilUsuarioInserirPageModule)
   }
 ];
 

@@ -31,10 +31,10 @@
   <div id="container" class="margin">
     <h2>Bem - vindo</h2>
     <div class="banner borda-1">
-      <img class="borda"
+      <ion-img class="borda"S
         style="width:  100%; height: 100%"
-        [src]="getImagen(bannerAtual)"
-      />
+        [src]="getImagenBanner(bannerAtual)"
+        ></ion-img>
     </div>
     <div class="container">
       <div class="column">
@@ -44,9 +44,10 @@
         <p-carousel [value]="promocoes" [numVisible]="5" [numScroll]="5" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
           <ng-template let-product pTemplate="item">
                 <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
-                    <div class="mb-3">
-                      <ion-img  class="borda" style="width:  100%; height: 100px" [src]="getImagen2(product)" >
-                        </ion-img>
+                    <div class="mb-3"  (click)="showEvento(product)" style="max-height: 200px;">
+                      <img  class="borda" style="width:  auto; height: auto; max-height: 190px;"
+                      [ngStyle]="{'min-width.px': getStyle()}" [src]="getImagen(product)"  />
+
                     </div>
 
                 </div>
@@ -57,12 +58,14 @@
         <h2>Destaques</h2>
 
 
-        <p-carousel [value]="destaques" [numVisible]="3" [numScroll]="5" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
+        <p-carousel [value]="destaques" [numVisible]="5" [numScroll]="5" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
           <ng-template let-destaque pTemplate="item">
                 <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
-                    <div class="mb-3">
-                      <img class="borda" style="width:  100%; height: 100px" [src]="getImagen2(destaque)" />
-                    </div>
+                  <div class="mb-3"  (click)="showEvento(destaque)" style="max-height: 200px;">
+                    <img  class="borda" style="width:  auto; height: auto; max-height: 190px;"
+                    [ngStyle]="{'min-width.px': getStyle()}" [src]="getImagen(destaque)"  />
+
+                  </div>
 
                 </div>
           </ng-template>
@@ -84,11 +87,11 @@
       </div>
       <div class="column ">
         <h2>Eventos</h2>
-        <div class="column-99  simple-bord">
-          <img
+        <div class="column-99  simple-bord" (click)="showEvento(eventoAtual)" >
+          <ion-img  (click)="(eventoAtual)"
             style="width: 95%; height: 150px"
             [src]="getImagen(eventoAtual)"
-          >
+          ></ion-img>
         </div>
       </div>
     </div>
@@ -98,7 +101,7 @@
         <div>
           <ion-item style="border-radius: 20px;">
             <ion-avatar slot="start">
-              <img  [src]="item.pessoa.url" />
+              <ion-img  [src]="item.pessoa.url"></ion-img>
             </ion-avatar>
             <ion-label> <p style="white-space: pre-line;">hambúrguer, é um alimento composto por recheios
               de um pão fatiado ou pãozinho. </p></ion-label>

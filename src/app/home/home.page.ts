@@ -13,7 +13,7 @@ import { StatusPedido } from '../model/enums/status-pedido.enum';
 import { toMoment, delay, _isNullOrWhiteSpace } from '../funcoes/funcoes';
 
 import { LocalNotifications as LocalNotificationsWeb } from '@capacitor/local-notifications';
-import { Platform } from '@ionic/angular';
+import { Platform, ModalController } from '@ionic/angular';
 
 import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
 import { PromocaoService } from '../service/pop-farma/promocao.service';
@@ -26,6 +26,8 @@ import { Destaque } from '../model/objetc/destaque';
 import { Dica } from '../model/objetc/dica';
 import { Banner } from '../model/objetc/banner';
 import { Empresa } from '../model/objetc/empresa';
+import { VisualizacaoPage } from '../pages/visualizacao/visualizacao.page';
+import { Visual } from '../model/auxi/Visual';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -80,7 +82,8 @@ export class HomePage implements OnInit, OnDestroy {
     private eventoService: EventoService,
     private destaqueService: DestaqueService,
     private dicaService: DicaService,
-    private bannerService: BannerService
+    private bannerService: BannerService,
+    private modalController: ModalController
   ) {
 
   }
@@ -214,11 +217,56 @@ export class HomePage implements OnInit, OnDestroy {
     }
   }
 
+  getImagenBanner(value) {
+    if(_isNullOrWhiteSpace(value)) {
+      return '/assets/imagens/hamburguer.webp';
+    } else {
+      return value.empresa.pessoa.url;
+    }
+  }
+
   getImagen2(value) {
     if(_isNullOrWhiteSpace(value)) {
       return '/assets/imagens/hamburguer.webp';
     } else {
       return value.link;
+    }
+  }
+
+
+  showEvento(evento: any) {
+    const visual =  new Visual();
+    visual.texto =  evento.texto;
+    visual.fim = evento.fim;
+    visual.inicio = evento.inicio;
+    visual.nome = evento.nome;
+    visual.link = evento.link;
+    this.addAddress(visual);
+  }
+
+
+  async addAddress(viusla: Visual) {
+    try {
+      const modal = await this.modalController.create({
+        component: VisualizacaoPage,
+        cssClass: 'my-custom-class',
+        componentProps: {
+          visual: viusla,
+        }
+      });
+      modal.present();
+      const { data } = await modal.onWillDismiss();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  getStyle() {
+    console.log(this.platform.platforms());
+    if (this.platform.is('desktop')) {
+      return '335';//335
+    } else {
+      return '235';
     }
   }
 }

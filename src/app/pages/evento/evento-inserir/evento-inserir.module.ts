@@ -10,6 +10,7 @@ import { EventoInserirPage } from './evento-inserir.page';
 import { InputMbiModule } from '../../../components/input/input-mbi/input-mbi.module';
 import { SearchSelectableModule } from '../../../components/search-selectable/search-selectable.module';
 import { DataInputModule } from '../../../components/data-input/data-input.module';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { DataInputModule } from '../../../components/data-input/data-input.modul
     EventoInserirPageRoutingModule,
     InputMbiModule,
     SearchSelectableModule,
-    DataInputModule
+    DataInputModule,
+    ImageCropperModule
   ],
   declarations: [EventoInserirPage]
 })
