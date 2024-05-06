@@ -1,3 +1,5 @@
+
+
 <ion-header>
   <ion-toolbar color="warning" >
     <ion-buttons slot="start">
@@ -29,7 +31,7 @@
 
 
   <div id="container" class="margin">
-    <h2>Bem - vindo</h2>
+    <h4>Bem - vindo</h4>
     <div class="banner borda-1">
       <ion-img class="borda"S
         style="width:  100%; height: 100%"
@@ -38,7 +40,7 @@
     </div>
     <div class="container">
       <div class="column">
-        <h2>Promoções</h2>
+        <h4>Promoções</h4>
 
 
         <p-carousel [value]="promocoes" [numVisible]="5" [numScroll]="5" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
@@ -55,7 +57,7 @@
         </p-carousel>
       </div>
       <div class="column">
-        <h2>Destaques</h2>
+        <h4>Destaques</h4>
 
 
         <p-carousel [value]="destaques" [numVisible]="5" [numScroll]="5" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
@@ -77,7 +79,7 @@
 
     <div class="container-flex">
       <div class="column">
-        <h2>Dicas</h2>
+        <h4>Dicas</h4>
         <div class="column-99 simple-bord">
           <ion-img
             style="width: 95%; height: 150px"
@@ -86,7 +88,7 @@
         </div>
       </div>
       <div class="column ">
-        <h2>Eventos</h2>
+        <h4>Eventos</h4>
         <div class="column-99  simple-bord" (click)="showEvento(eventoAtual)" >
           <ion-img  (click)="(eventoAtual)"
             style="width: 95%; height: 150px"
@@ -96,7 +98,7 @@
       </div>
     </div>
     <div >
-      <h2>hamburgueria</h2>
+      <h4>hamburgueria</h4>
       <div *ngFor="let item of empresas"  class="flex borda ">
         <div>
           <ion-item style="border-radius: 20px;">
@@ -114,3 +116,4 @@
   </div>
 
 </ion-content>
+

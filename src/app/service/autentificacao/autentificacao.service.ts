@@ -15,7 +15,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 export class AutentificacaoService {
   //public url: string = 'http://192.168.17.1:8080';
   public url: string = 'http://192.168.3.11:8080';
-
+  //public url: string = 'http://191.242.17.2:8080';
   //public url: string = 'https://appfarmanciafacil.tech:8080';
   //public url: string = 'https://app-farmacia-facil.herokuapp.com';
   //public url: string = 'http://177.75.52.122:8080'; // martins rodrigues ip

@@ -147,6 +147,18 @@
     <mat-tab label="Endereco">
       <form #f2="ngForm">
         <ion-list lines="none">
+
+          <div class="ion-margin-bottom" >
+            <ion-item color="light">
+              <ion-icon name="street-view" slot="start" color="warning"></ion-icon>
+              <ion-input type="text" name="cep1" [(ngModel)]="cep" ngModel #cep1="ngModel"
+                placeholder="CEP" (ionBlur)="consultaCEP()"
+                [brmasker]="{mask:'00.000-000', len:10, userCaracters: true}" >
+              </ion-input>
+
+            </ion-item>
+
+          </div>
           <div class="ion-margin-bottom" *ngIf="value.pessoa.cidade">
             <ion-item color="light">
               <ion-icon name="street-view" slot="start" color="warning"></ion-icon>
@@ -206,7 +218,7 @@
           </div>
         </ion-list>
         <ion-button *ngIf="!isLoading" [disabled]="!f1.valid || (c_passwordCtrl.value !== passwordCtrl.value)"
-          expand="block" shape="round" type="submit" color="warning" (click)="salvar()">
+          expand="block" shape="round" type="submit" color="warning" (click)="newRegistro()">
           Finalizar
         </ion-button>
 

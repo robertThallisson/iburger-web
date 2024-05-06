@@ -23,6 +23,7 @@ import { Platform } from '@ionic/angular';
 import { EmpresaService } from '../../service/pop-farma/empresa.service';
 import { _isNullOrWhiteSpace } from '../../funcoes/funcoes';
 import { Empresa } from '../../model/objetc/empresa';
+import { Token } from 'src/app/model/seguranca/token';
 
 declare var google;
 
@@ -63,6 +64,23 @@ export class CadastrarPage extends BaseInserir<Usuario> implements OnInit {
     this.value.pessoa = new Pessoa();
     this.value.pessoa.enderecos = [];
     this.value.pessoa.enderecos.push(this.endereco);
+  }
+
+  consultaCEP() {
+    this.base.consultaCEP(this.cep, this.carregar.bind(this));
+  }
+
+  carregar(value: any) {
+      this.cidadeService.pesquisarByIbge(Number(value.ibge)).subscribe(
+        data => {
+          this.value.pessoa.cidade = data as Cidade;
+        },
+        error => {
+          this.base.mensagemErro('Cep não encontrado');
+        }
+
+      );
+
   }
 
   ngOnInit() {
@@ -196,7 +214,7 @@ export class CadastrarPage extends BaseInserir<Usuario> implements OnInit {
    // }
 
 
-    this.consultaCEP();
+    //this.consultaCEP();
 
   }
 
@@ -260,6 +278,17 @@ export class CadastrarPage extends BaseInserir<Usuario> implements OnInit {
 
   }
 
+  newRegistro() {
+    this.base.as.getNewTokenRegisto().subscribe(
+      data => {
+        this.autentificacaoService.token = data as Token;
+        this.salvar();
+      },
+      erro => {
+        this.base.mensagemErro('Erro ao tentar obter token de registro');
+      }
+    ); ;
+  }
 
   comEmpresa() {
     this.value.temEmpresa = true;
@@ -278,17 +307,6 @@ export class CadastrarPage extends BaseInserir<Usuario> implements OnInit {
     this.value.pessoa.enderecos[0].principal = true;
   }
 
-  consultaCEP() {
 
-    this.cidadeService.pesquisarByIbge(5208608).subscribe(
-      data => {
-        this.value.pessoa.cidade = data as Cidade;
-      },
-      error => {
-        this.base.mensagemErro('Cep não encontrado');
-      }
-
-    );
-  }
 }
 

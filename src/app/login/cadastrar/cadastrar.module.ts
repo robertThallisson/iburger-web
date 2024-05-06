@@ -21,7 +21,8 @@ import { ButtonModule } from 'primeng/button';
     MatTabsModule,
     BrMaskerModule,
     DataInputModule,
-    ButtonModule
+    ButtonModule,
+    BrMaskerModule
   ],
   declarations: [CadastrarPage],
   providers: [
